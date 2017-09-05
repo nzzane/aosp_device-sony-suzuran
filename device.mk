@@ -20,7 +20,7 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 PRODUCT_COPY_FILES := \
     $(DEVICE_PATH)/rootdir/system/etc/audio_policy.conf:system/etc/audio_policy.conf \
-    $(DEVICE_PATH)/rootdir/system/etc/BCM43455.hcd:system/etc/firmware/BCM43xx.hcd \
+    $(DEVICE_PATH)/rootdir/system/etc/BCM4356.hcd:system/etc/firmware/BCM43xx.hcd \
     $(DEVICE_PATH)/rootdir/system/etc/wifi/bcmdhd.cal:system/etc/wifi/bcmdhd.cal \
     $(DEVICE_PATH)/rootdir/system/etc/sensors/sensor_def_qcomdev.conf:system/etc/sensors/sensor_def_qcomdev.conf \
     $(DEVICE_PATH)/rootdir/system/etc/thermanager.xml:system/etc/thermanager.xml \
@@ -65,20 +65,20 @@ PRODUCT_PACKAGES += \
     Stk
 
 PRODUCT_AAPT_CONFIG := normal
-PRODUCT_AAPT_PREBUILT_DPI := xhdpi hdpi
-PRODUCT_AAPT_PREF_CONFIG := xhdpi
+PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
+PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 PRODUCT_PROPERTY_OVERRIDES := \
-    ro.sf.lcd_density=320 \
-    ro.usb.pid_suffix=1DA
+    ro.sf.lcd_density=480 \
+    ro.usb.pid_suffix=1D9
 
 ## 8MP Switch for ES
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.8mp.config=true
 
 # Inherit from those products. Most specific first.
-$(call inherit-product, device/sony/kitakami/platform.mk)
+$(call inherit-product, device/sony/kitakami-common/platform.mk)
 $(call inherit-product, vendor/sony/kitakami-suzuran/suzuran-vendor.mk)
 
 # copy wlan firmware
-$(call inherit-product-if-exists, vendor/broadcom/wlan/bcmdhd/firmware/bcm43455/device-bcm.mk)
+$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4356/device-bcm.mk)
